@@ -13,8 +13,10 @@ respawn
 respawn limit 5 30
 limit nofile 65550 65550
 
+<% if node['platform_family'] == 'debian' %>
 setuid root
 setgid root
+<% end %>
 
 script
 exec beaver -c <%= @config_path %>/<%= @config_file %> -l <%= @log_path %>/<%= @log_file %>
