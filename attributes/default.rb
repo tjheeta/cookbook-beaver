@@ -51,4 +51,16 @@ if node['platform_family'] == 'debian'
       'tags' => 'auth'
     }
   ]
+elsif node['platform_family'] == 'rhel'
+  default['beaver']['files'] = [
+    {
+      'path' => '/var/log/messages',
+      'type' => 'syslog',
+      'tags' => 'sys,syslog'
+    }, {
+      'path' => '/var/log/secure',
+      'type' => 'syslog',
+      'tags' => 'auth'
+    }
+  ]
 end
